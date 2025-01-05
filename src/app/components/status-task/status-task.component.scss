@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+.concluded {
+    @include mat.chips-overrides((
+        elevated-container-color:  #f9f9f9,
+    ));  
+  }
+  .pending {
+    @include mat.chips-overrides((
+        elevated-container-color: #f9f9f9,
+    ));
+  }
+  .in-progress{
+      @include mat.chips-overrides((
+        elevated-container-color: #f9f9f9,
+    ));
+  }
+  
+.mat-mdc-chip-set {
+    width: max-content;
+}
+
+.container-status-task {
+    display: flex;
+    flex-direction: row !important;    
+}
+
+.container-status-task-pointer-events-none{
+    pointer-events: none;
+}

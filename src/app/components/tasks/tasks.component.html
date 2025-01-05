@@ -1,0 +1,25 @@
+<section class="container flex-direction-column">
+    <mat-accordion class="task-container" *ngFor="let tarefa of this.dao.getTarefas()" appearance="outlined">
+        <mat-expansion-panel 
+            [ngClass]="{'pending':tarefa.getStatus==0, 'concluded': tarefa.getStatus==2, 'in-progress':tarefa.getStatus==1}" 
+            #panel [expanded]="tarefa.getPanelOpenState"
+            (afterExpand)="tarefa.togglePanelState(this.dao)" (afterCollapse)="tarefa.togglePanelState(this.dao)">
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{tarefa.getName}} </mat-panel-title>
+                <mat-panel-description>
+                    {{tarefa.getPanelOpenState ? '...' : minDescription(tarefa.getDescription)}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{tarefa.getDescription}}</p>
+            <div>
+                <mat-icon aria-hidden="false" aria-label="Editar" fontIcon="edit"
+                    (click)="edit(tarefa.getId)"></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Remover" fontIcon="delete"
+                    (click)="delete(tarefa.getId)"></mat-icon>
+            </div>
+            <app-status-task [disableButtonsEvents]="true" [statusTask]="this.statusTask"
+                [selectedValue]="tarefa.getStatus">
+            </app-status-task>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>

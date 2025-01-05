@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+.input-task-title {
+  @include mat.card-overrides((
+    title-text-size: 2rem
+  ));
+}
+
+.example-form-field {
+    width: 100%;
+}
