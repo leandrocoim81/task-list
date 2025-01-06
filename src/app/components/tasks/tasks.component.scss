@@ -17,22 +17,24 @@
                 cursor: pointer;
             }
         }
+        @media (max-width: 768px) {
+        }
     }
 }
 
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 .concluded {
   @include mat.expansion-overrides((
-    container-background-color: #d1e4cb
+    container-background-color: #d1e4cb,
   ));  
 }
 .pending {
   @include mat.expansion-overrides((
-    container-background-color: #ebe0e0
+    container-background-color: #ebe0e0,
   ));
 }
 .in-progress{
     @include mat.expansion-overrides((
-    container-background-color: #f7f8e8
+    container-background-color: #f7f8e8,
   ));
 }

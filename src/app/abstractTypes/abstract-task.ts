@@ -1,3 +1,4 @@
+import { ChangeDetectorRef } from "@angular/core";
 import { StatusTask } from "../enums/status-task";
 import { DaoService } from "../services/dao.service";
 
@@ -9,7 +10,7 @@ export abstract class AbstractTask {
     protected status: StatusTask;
     protected panelOpenState: boolean;
 
-    constructor() {
+    constructor(private cdr?:ChangeDetectorRef) {
         this.id = 0;
         this.name = ''
         this.description = '';
@@ -32,10 +33,9 @@ export abstract class AbstractTask {
     // Métodos concretos opcionais
     togglePanelState(dao: DaoService): void {
         setTimeout(() => {
-            this.panelOpenState = !this.panelOpenState;
-            console.log('executou')
-            //this.cdr?.detectChanges();
+            this.panelOpenState = !this.panelOpenState;            
             dao.updateItem('tasks')
+            this.cdr?.detectChanges();
         }, 0);
     }
 }
